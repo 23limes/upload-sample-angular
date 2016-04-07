@@ -6,34 +6,16 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($log, toastr, $modal, Upload, CLOUDINARY, spinnerService, localStorageService) {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1459903997971;
-    vm.showToastr = showToastr;
+    vm.showAvatarUpload = function(e){
+      e.preventDefault();
 
-    activate();
+      //show the modal screen
 
-    function activate() {
-      getWebDevTec();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
+      //listen for result and upload the file, if any
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
-
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
-
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
-      });
-    }
+    };
   }
 })();

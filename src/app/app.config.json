@@ -1,0 +1,23 @@
+{
+  "production": {
+    "apiDomain": "http://your.backend.com/api/v1",
+    "CLOUDINARY": {
+      "upload_endpoint": "https://api.cloudinary.com/v1_1/<your account folder>/image/upload",
+      "upload_preset": "<your preset>"
+    }
+  },
+  "staging": {
+    "apiDomain": "http://your.backend.com/api/v1",
+    "CLOUDINARY": {
+      "upload_endpoint": "https://api.cloudinary.com/v1_1/<your account folder>/image/upload",
+      "upload_preset": "<your preset>"
+    }
+  },
+  "development": {
+    "apiDomain": "http://your.backend.com/api/v1",
+    "CLOUDINARY": {
+      "upload_endpoint": "https://api.cloudinary.com/v1_1/dilwljosy/image/upload",
+      "upload_preset": "oevygdc2"
+    }
+  }
+}

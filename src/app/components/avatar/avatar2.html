@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h3 class="modal-title">Upload Your Profile Image</h3>
+</div>
+<div class="modal-body">
+  <form class="avatar-upload" name="avatar.avatarForm">
+    <button class="btn btn-info" ngf-select ngf-capture="'camera'" ng-model="avatar.picFile" accept="image/*">Select Picture</button>
+
+    <span class="help-block" ng-show="avatar.picFile.$error">
+      <span class="file-error" ng-show="avatar.picFile.$error === 'maxSize'">This file is too large (max 6MB)</span>
+      <span class="file-error" ng-show="avatar.picFile.$error === 'minSize'">This file is too small (min 10KB)</span>
+      <span class="file-error" ng-show="avatar.picFile.$error === 'minWidth'">This image is too small (min 300px wide)</span>
+      <span class="file-error" ng-show="avatar.picFile.$error === 'minHeight'">This image is too small (min 300px high)</span>
+      <span class="file-error" ng-show="avatar.picFile.$error === 'accept'"><p>File must be an image: (png, gif, jpeg)</p></span>
+    </span>
+    <div ngf-drop ng-model="avatar.picFile" ngf-pattern="image/*" class="cropArea" ngf-min-width="300" ngf-min-height="300" ngf-max-size="6MB" ngf-min-size="10KB">
+      <img-crop image="avatar.picFile | ngfDataUrl" result-image="avatar.croppedDataUrl" ng-init="avatar.croppedDataUrl=''"></img-crop>
+    </div>
+    <div>
+      <img class="preview" ng-src="{{avatar.croppedDataUrl}}" />
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-info" type="button" ng-click="avatar.ok()">OK</button>
+  <button class="btn btn-warning" type="button" ng-click="avatar.cancel()">Cancel</button>
+</div>
+
+<span class="validation-messages" ng-messages="avatar.avatarForm.picFile.$error" ng-show="avatar.avatarForm.description.$touched || avatar.avatarForm.$submitted">
+  <span ng-message="minHeight">This is too small (min 300px high)</span>
+</span>
